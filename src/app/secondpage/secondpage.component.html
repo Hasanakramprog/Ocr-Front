@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row p-2">
+    <div class="col-6">
+      <div *ngIf="imgURL">
+        <img [src]="imgURL" width="500" height="250"/>
+      </div>
+
+      <input #file id="asd" type="file" accept="image/*" (change)="preview(file.files)"/>
+    </div>
+    <div class="col-6">
+      <P id="output">Results</P>
+      <table class="table">
+        <thead class="thead-dark">
+        <th>field name</th>
+        <th>value</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let res of result">
+          <td>{{res.field}}</td>
+          <td>{{res.text}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row" *ngIf="imgURL">
+    <div class="col-6 card" >
+      <div>
+        <div class="example-wrapper">
+          <kendo-dropdownlist [data]="listItems"
+                              [(ngModel)]="template"
+                              defaultItem="select temp"
+
+          >
+          </kendo-dropdownlist>
+        </div>
+        <div class="m-2">
+          <button kendoButton (click)="makeOcr()" [primary]="true">Procces</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

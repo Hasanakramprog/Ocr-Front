@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row p-2">
+    <div class="col-6">
+      <angular-cropper
+        *ngIf="imgURL"
+        #angularCropper
+        [cropperOptions]="config"
+        [imageUrl]="imgURL"
+      ></angular-cropper>
+      <input #file id="asd" type="file" accept="image/*" (change)="preview(file.files)"/>
+    </div>
+  </div>
+  <div class="row" *ngIf="imgURL">
+    <div class="col-8 card">
+      <div class="card-header">
+        Add Template
+      </div>
+      <div>
+        <label [for]="field">Template-Name: </label>
+        <input class="form-control" [(ngModel)]="templatename"/>
+      </div>
+      <div>
+        <label [for]="field">Field-Name: </label>
+        <input class="form-control" #field/>
+        <div class="m-2">
+          <button kendoButton (click)="addfield()" [primary]="true">ADD Field</button>
+        </div>
+      </div>
+    </div>
+    <div class="m-2">
+      <button kendoButton (click)="addTemplate()" [primary]="true">Save</button>
+    </div>
+  </div>
+</div>
